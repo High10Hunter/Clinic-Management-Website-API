@@ -1,17 +1,12 @@
 require('dotenv').config();
-const app = require('./src/app')
+import app from './src/app';
 
+const { PORT } = process.env || 3000;
 
-
-const {PORT} = process.env;
-
-
-
-
-const server = app.listen( PORT, () => {
-    console.log(`WSV start with port ${PORT}`);
-})
+const server = app.listen(PORT, () => {
+	console.log(`Listening on port ${PORT}`);
+});
 
 process.on('SIGINT', () => {
-    server.close( () => console.log(`exits server express`))
-})
+	server.close(() => console.log(`exits server express`));
+});
