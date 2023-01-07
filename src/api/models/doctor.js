@@ -22,24 +22,11 @@ module.exports = (sequelize, DataTypes) => {
 	}
 	Doctor.init(
 		{
-			name: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
 			avatar: {
 				type: DataTypes.STRING,
 			},
-			birthday: {
-				type: DataTypes.DATEONLY,
-				allowNull: false,
-			},
-			gender: {
-				type: DataTypes.BOOLEAN,
-				allowNull: false,
-			},
-			status: {
-				type: DataTypes.BOOLEAN,
-				allowNull: false,
+			description: {
+				type: DataTypes.TEXT,
 			},
 		},
 		{

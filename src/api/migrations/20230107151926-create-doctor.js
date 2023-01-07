@@ -9,20 +9,11 @@ module.exports = {
 				primaryKey: true,
 				type: DataTypes.INTEGER,
 			},
-			name: {
-				type: DataTypes.STRING,
-				allowNull: false,
-			},
 			avatar: {
 				type: DataTypes.STRING,
 			},
-			birthday: {
-				type: DataTypes.DATEONLY,
-				allowNull: false,
-			},
-			gender: {
-				type: DataTypes.BOOLEAN,
-				allowNull: false,
+			description: {
+				type: DataTypes.TEXT,
 			},
 			speciality_id: {
 				type: DataTypes.INTEGER,
@@ -31,10 +22,6 @@ module.exports = {
 					model: 'specialities',
 					key: 'id',
 				},
-			},
-			status: {
-				type: DataTypes.BOOLEAN,
-				allowNull: false,
 			},
 			user_id: {
 				type: DataTypes.INTEGER,
