@@ -34,10 +34,6 @@ module.exports = {
 					allowNull: false,
 					unique: 'doctor_id_shift_id_date_unique',
 				},
-				price: {
-					type: DataTypes.INTEGER,
-					allowNull: false,
-				},
 				createdAt: {
 					allowNull: false,
 					type: DataTypes.DATE,

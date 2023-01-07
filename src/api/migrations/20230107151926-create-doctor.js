@@ -15,6 +15,10 @@ module.exports = {
 			description: {
 				type: DataTypes.TEXT,
 			},
+			price: {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+			},
 			speciality_id: {
 				type: DataTypes.INTEGER,
 				allowNull: false,

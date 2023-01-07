@@ -23,10 +23,6 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.DATEONLY,
 				allowNull: false,
 			},
-			price: {
-				type: DataTypes.INTEGER,
-				allowNull: false,
-			},
 		},
 		{
 			sequelize,
