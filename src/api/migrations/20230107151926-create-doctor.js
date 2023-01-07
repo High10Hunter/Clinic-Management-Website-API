@@ -13,6 +13,9 @@ module.exports = {
 				type: DataTypes.STRING,
 				allowNull: false,
 			},
+			avatar: {
+				type: DataTypes.STRING,
+			},
 			birthday: {
 				type: DataTypes.DATEONLY,
 				allowNull: false,
