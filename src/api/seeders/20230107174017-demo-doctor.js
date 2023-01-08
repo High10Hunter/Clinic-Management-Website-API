@@ -5,16 +5,6 @@ const { Speciality, User } = require('../models');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		/**
-		 * Add seed commands here.
-		 *
-		 * Example:
-		 * await queryInterface.bulkInsert('People', [{
-		 *   name: 'John Doe',
-		 *   isBetaMember: false
-		 * }], {});
-		 */
-
 		const specialities_id = await Speciality.findAll({
 			attributes: ['id'],
 		});

@@ -5,16 +5,6 @@ const { Doctor, Shift } = require('../models');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		/**
-		 * Add seed commands here.
-		 *
-		 * Example:
-		 * await queryInterface.bulkInsert('People', [{
-		 *   name: 'John Doe',
-		 *   isBetaMember: false
-		 * }], {});
-		 */
-
 		const doctors_id = await Doctor.findAll({
 			attributes: ['id'],
 		});
