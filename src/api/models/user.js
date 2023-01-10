@@ -15,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
 				as: 'appointments',
 			});
 		}
+
+		toJSON() {
+			return {
+				...this.get(),
+				id: undefined,
+				password: undefined,
+				createdAt: undefined,
+				updatedAt: undefined,
+			};
+		}
 	}
 	User.init(
 		{
