@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import UserConotroller from '../controllers/admin/UserController';
+import UserController from '../controllers/admin/UserController';
 
 const router = Router();
 
 const adminRoutes = app => {
 	//manage users routes
-	router.get('/users', UserConotroller.index);
+	router.get('/users', UserController.index);
 
 	app.use('/admin', router);
 };
