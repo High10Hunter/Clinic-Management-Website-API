@@ -1,5 +1,7 @@
 import { User } from '../../models';
 import { Op } from 'sequelize';
+import { NotFoundError } from '../../errors';
+import { hashPassword } from '../../utils';
 
 const getAllUser = async (q = '', page = 1, limit = 10) => {
 	try {
@@ -25,8 +27,32 @@ const getAllUser = async (q = '', page = 1, limit = 10) => {
 
 		return { rows, endPage, nextPage, prevPage };
 	} catch (error) {
-		throw new Error('Cannot get users');
+		throw new NotFoundError('Cannot get users');
 	}
 };
 
-export default { getAllUser };
+const createUser = async data => {
+	try {
+		const { birthday } = data;
+
+		//ex: birthday: 1999-03-01 => password: 19990301
+		let dateArr = birthday.split('-');
+		dateArr.reverse();
+		dateArr = dateArr.join('');
+
+		const hashedPassword = await hashPassword(dateArr);
+
+		const user = await User.create({
+			...data,
+			password: hashedPassword,
+			status: 1,
+		});
+
+		return user;
+	} catch (error) {
+		const { errors } = error;
+		throw new Error(errors[0].message);
+	}
+};
+
+export default { getAllUser, createUser };
