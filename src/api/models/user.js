@@ -120,9 +120,6 @@ module.exports = (sequelize, DataTypes) => {
 					notNull: {
 						msg: 'Phone number is required',
 					},
-					isNumeric: {
-						msg: 'Phone number must be number',
-					},
 					minLength(value) {
 						if (value.length < 10) {
 							throw new Error(
