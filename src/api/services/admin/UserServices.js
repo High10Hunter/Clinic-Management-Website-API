@@ -35,7 +35,7 @@ const createUser = async data => {
 	try {
 		const { birthday } = data;
 
-		//ex: birthday: 1999-03-01 => password: 19990301
+		//ex: birthday: 1999-03-01 => password: 01031999
 		let dateArr = birthday.split('-');
 		dateArr.reverse();
 		dateArr = dateArr.join('');
