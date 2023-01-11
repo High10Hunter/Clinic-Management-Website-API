@@ -7,6 +7,7 @@ const adminRoutes = app => {
 	//manage users routes
 	router.get('/users', UserController.index);
 	router.post('/users/create', UserController.create);
+	router.patch('/users/update/:id', UserController.update);
 
 	app.use('/api/admin', router);
 };

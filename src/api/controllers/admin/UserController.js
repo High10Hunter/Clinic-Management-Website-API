@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes';
 import User from '../../services/admin/UserServices';
 
 const index = async (req, res) => {
@@ -9,7 +10,7 @@ const index = async (req, res) => {
 			limit
 		);
 
-		return res.status(200).json({
+		return res.status(StatusCodes.OK).json({
 			message: 'Get users successfully',
 			data: rows,
 			prevPage,
@@ -17,7 +18,7 @@ const index = async (req, res) => {
 			endPage,
 		});
 	} catch (error) {
-		return res.status(500).json({
+		return res.status(StatusCodes.BAD_REQUEST).json({
 			message: error.message,
 			data: [],
 		});
@@ -28,16 +29,32 @@ const create = async (req, res) => {
 	try {
 		const user = await User.createUser(req.body);
 
-		return res.status(200).json({
+		return res.status(StatusCodes.CREATED).json({
 			message: 'Create user successfully',
 			data: user,
 		});
 	} catch (error) {
-		return res.status(500).json({
+		return res.status(StatusCodes.BAD_REQUEST).json({
 			message: error.message || 'Cannot create user',
 			data: [],
 		});
 	}
 };
 
-export default { index, create };
+const update = async (req, res) => {
+	try {
+		const user = await User.updateUser(req.params.id, req.body);
+
+		return res.status(StatusCodes.OK).json({
+			message: 'Update user successfully',
+			data: user,
+		});
+	} catch (error) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			message: error.message || 'Cannot update user',
+			data: [],
+		});
+	}
+};
+
+export default { index, create, update };

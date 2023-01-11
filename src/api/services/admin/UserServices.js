@@ -55,4 +55,21 @@ const createUser = async data => {
 	}
 };
 
-export default { getAllUser, createUser };
+const updateUser = async (id, data) => {
+	try {
+		const user = await User.findByPk(id);
+
+		user.set({
+			...data,
+		});
+
+		await user.save();
+
+		return user;
+	} catch (error) {
+		const { errors } = error;
+		throw new Error(errors[0].message);
+	}
+};
+
+export default { getAllUser, createUser, updateUser };
