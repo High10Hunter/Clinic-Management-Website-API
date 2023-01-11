@@ -59,6 +59,13 @@ const updateUser = async (id, data) => {
 	try {
 		const user = await User.findByPk(id);
 
+		const { password } = data;
+
+		if (password) {
+			console.log(1);
+			throw new Error('Cannot update password');
+		}
+
 		user.set({
 			...data,
 		});
@@ -68,7 +75,11 @@ const updateUser = async (id, data) => {
 		return user;
 	} catch (error) {
 		const { errors } = error;
-		throw new Error(errors[0].message);
+		if (!errors) {
+			throw new Error(error.message || 'Cannot update user');
+		} else {
+			throw new Error(errors[0].message || 'Cannot update user');
+		}
 	}
 };
 
