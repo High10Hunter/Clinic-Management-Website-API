@@ -57,4 +57,18 @@ const update = async (req, res) => {
 	}
 };
 
-export default { index, create, update };
+const destroy = async (req, res) => {
+	try {
+		await User.deleteUser(req.params.id);
+
+		return res.status(StatusCodes.OK).json({
+			message: 'Delete user successfully',
+		});
+	} catch (error) {
+		return res.status(StatusCodes.BAD_REQUEST).json({
+			message: error.message || 'Cannot delete user',
+		});
+	}
+};
+
+export default { index, create, update, destroy };

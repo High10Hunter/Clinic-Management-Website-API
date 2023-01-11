@@ -72,4 +72,17 @@ const updateUser = async (id, data) => {
 	}
 };
 
-export default { getAllUser, createUser, updateUser };
+const deleteUser = async id => {
+	try {
+		const user = await User.findByPk(id);
+		if (!user) {
+			throw new Error('User not found');
+		}
+
+		await user.destroy();
+	} catch (error) {
+		throw new Error(error.message || 'Cannot delete user');
+	}
+};
+
+export default { getAllUser, createUser, updateUser, deleteUser };
