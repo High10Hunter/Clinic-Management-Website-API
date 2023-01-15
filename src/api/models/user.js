@@ -1,5 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
+const { ROLE_ADMIN, ROLE_NURSE, ROLE_DOCTOR } = require('../config/constants');
+
 module.exports = (sequelize, DataTypes) => {
 	class User extends Model {
 		/**
@@ -23,7 +25,15 @@ module.exports = (sequelize, DataTypes) => {
 				password: undefined,
 				createdAt: undefined,
 				updatedAt: undefined,
+				role: this.getRole(),
 			};
+		}
+
+		getRole() {
+			if (this.role === ROLE_ADMIN) return 'admin';
+			else if (this.role === ROLE_NURSE) return 'nurse';
+			else if (this.role === ROLE_DOCTOR) return 'doctor';
+			else return '';
 		}
 	}
 	User.init(
